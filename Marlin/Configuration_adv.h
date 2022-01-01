@@ -1652,7 +1652,7 @@
 //#define CONFIGURATION_EMBEDDING
 
 // Add an optimized binary file transfer mode, initiated with 'M28 B1'
-//#define BINARY_FILE_TRANSFER
+#define BINARY_FILE_TRANSFER
 
 /**
  * Set this option to one of the following (or the board's defaults apply):
@@ -1663,7 +1663,7 @@
  *
  * :[ 'LCD', 'ONBOARD', 'CUSTOM_CABLE' ]
  */
-//#define SDCARD_CONNECTION LCD
+#define SDCARD_CONNECTION ONBOARD
 
 // Enable if SD detect is rendered useless (e.g., by using an SD extender)
 //#define NO_SD_DETECT
@@ -2537,7 +2537,7 @@
  *
  * Enable PARK_HEAD_ON_PAUSE to add the G-code M125 Pause and Park.
  */
-//#define ADVANCED_PAUSE_FEATURE
+#define ADVANCED_PAUSE_FEATURE
 #if ENABLED(ADVANCED_PAUSE_FEATURE)
 #define PAUSE_PARK_RETRACT_FEEDRATE 60       // (mm/s) Initial retract feedrate.
 #define PAUSE_PARK_RETRACT_LENGTH 2          // (mm) Initial retract.
@@ -4019,10 +4019,10 @@
  * Host Prompt Support enables Marlin to use the host for user prompts so
  * filament runout and other processes can be managed from the host side.
  */
-//#define HOST_ACTION_COMMANDS
+#define HOST_ACTION_COMMANDS
 #if ENABLED(HOST_ACTION_COMMANDS)
-//#define HOST_PAUSE_M76
-//#define HOST_PROMPT_SUPPORT
+#define HOST_PAUSE_M76
+#define HOST_PROMPT_SUPPORT
 //#define HOST_START_MENU_ITEM      // Add a menu item that tells the host to start
 //#define HOST_SHUTDOWN_MENU_ITEM   // Add a menu item that tells the host to shut down
 #endif

@@ -857,19 +857,19 @@
 #endif
 
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
-#define X_MIN_ENDSTOP_INVERTING false      // Set to true to invert the logic of the endstop.
-#define Y_MIN_ENDSTOP_INVERTING false      // Set to true to invert the logic of the endstop.
-#define Z_MIN_ENDSTOP_INVERTING false      // Set to true to invert the logic of the endstop.
-#define I_MIN_ENDSTOP_INVERTING false      // Set to true to invert the logic of the endstop.
-#define J_MIN_ENDSTOP_INVERTING false      // Set to true to invert the logic of the endstop.
-#define K_MIN_ENDSTOP_INVERTING false      // Set to true to invert the logic of the endstop.
-#define X_MAX_ENDSTOP_INVERTING false      // Set to true to invert the logic of the endstop.
-#define Y_MAX_ENDSTOP_INVERTING false      // Set to true to invert the logic of the endstop.
-#define Z_MAX_ENDSTOP_INVERTING false      // Set to true to invert the logic of the endstop.
-#define I_MAX_ENDSTOP_INVERTING false      // Set to true to invert the logic of the endstop.
-#define J_MAX_ENDSTOP_INVERTING false      // Set to true to invert the logic of the endstop.
-#define K_MAX_ENDSTOP_INVERTING false      // Set to true to invert the logic of the endstop.
-#define Z_MIN_PROBE_ENDSTOP_INVERTING true // Set to true to invert the logic of the probe.
+#define X_MIN_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
+#define Y_MIN_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
+#define Z_MIN_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
+#define I_MIN_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
+#define J_MIN_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
+#define K_MIN_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
+#define X_MAX_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
+#define Y_MAX_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
+#define Z_MAX_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
+#define I_MAX_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
+#define J_MAX_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
+#define K_MAX_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
+#define Z_MIN_PROBE_ENDSTOP_INVERTING false // Set to true to invert the logic of the probe.
 
 /**
  * Stepper Drivers
@@ -1238,7 +1238,7 @@
  */
 #define NOZZLE_TO_PROBE_OFFSET \
   {                            \
-    X, Y, 0                    \
+    -44, -16, 0                \
   }
 
 // Most probes should stay away from the edges of the bed, but
@@ -1503,7 +1503,7 @@
  * RAMPS-based boards use SERVO3_PIN for the first runout sensor.
  * For other boards you may need to define FIL_RUNOUT_PIN, FIL_RUNOUT2_PIN, etc.
  */
-//#define FILAMENT_RUNOUT_SENSOR
+#define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
 #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
 #define NUM_RUNOUT_SENSORS 1            // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
@@ -1607,7 +1607,7 @@
 //#define AUTO_BED_LEVELING_LINEAR
 #define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
-//#define MESH_BED_LEVELING
+// #define MESH_BED_LEVELING
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable one of
@@ -1957,7 +1957,7 @@
  *    P1  Raise the nozzle always to Z-park height.
  *    P2  Raise the nozzle by Z-park amount, limited to Z_MAX_POS.
  */
-//#define NOZZLE_PARK_FEATURE
+#define NOZZLE_PARK_FEATURE
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
 // Specify a park position as { X, Y, Z_raise }
