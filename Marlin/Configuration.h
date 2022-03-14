@@ -70,7 +70,7 @@
 
 // Author info of this build printed to the host during boot and M115
 #define STRING_CONFIG_H_AUTHOR "(none, default config)" // Who made the changes.
-//#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
+#define CUSTOM_VERSION_FILE Version.h                   // Path from the root directory (no quotes)
 
 /**
  * *** VENDORS PLEASE READ ***
@@ -96,7 +96,7 @@
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-#define MOTHERBOARD BOARD_CREALITY_V4
+#define MOTHERBOARD BOARD_CREALITY_V422
 #endif
 
 /**
@@ -143,7 +143,7 @@
 //#define BLUETOOTH
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Scott's custom Ender 3 pro"
+// #define CUSTOM_MACHINE_NAME MACHINE_NAME
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -583,14 +583,14 @@
 // Above this temperature the heater will be switched off.
 // This can protect components from overheating, but NOT from shorts and failures.
 // (Use MINTEMP for thermistor short/failure protection.)
-#define HEATER_0_MAXTEMP 300
-#define HEATER_1_MAXTEMP 300
-#define HEATER_2_MAXTEMP 300
-#define HEATER_3_MAXTEMP 300
-#define HEATER_4_MAXTEMP 300
-#define HEATER_5_MAXTEMP 300
-#define HEATER_6_MAXTEMP 300
-#define HEATER_7_MAXTEMP 300
+#define HEATER_0_MAXTEMP 350
+#define HEATER_1_MAXTEMP 350
+#define HEATER_2_MAXTEMP 350
+#define HEATER_3_MAXTEMP 350
+#define HEATER_4_MAXTEMP 350
+#define HEATER_5_MAXTEMP 350
+#define HEATER_6_MAXTEMP 350
+#define HEATER_7_MAXTEMP 350
 #define BED_MAXTEMP 150
 #define CHAMBER_MAXTEMP 60
 
@@ -600,7 +600,7 @@
  * (especially before PID tuning). Setting the target temperature too close to MAXTEMP guarantees
  * a MAXTEMP shutdown! Use these values to forbid temperatures being set too close to MAXTEMP.
  */
-#define HOTEND_OVERSHOOT 15 // (°C) Forbid temperatures over MAXTEMP - OVERSHOOT
+#define HOTEND_OVERSHOOT 10 // (°C) Forbid temperatures over MAXTEMP - OVERSHOOT
 #define BED_OVERSHOOT 10    // (°C) Forbid temperatures over MAXTEMP - OVERSHOOT
 #define COOLER_OVERSHOOT 2  // (°C) Forbid temperatures closer than OVERSHOOT
 
@@ -1447,8 +1447,8 @@
 // @section machine
 
 // The size of the printable area
-#define X_BED_SIZE 200
-#define Y_BED_SIZE 200
+#define X_BED_SIZE 220
+#define Y_BED_SIZE 220
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1614,8 +1614,8 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-#define AUTO_BED_LEVELING_BILINEAR
-//#define AUTO_BED_LEVELING_UBL
+// #define AUTO_BED_LEVELING_BILINEAR
+#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
 /**
@@ -1975,7 +1975,7 @@
     (X_MIN_POS + 10), (Y_MAX_POS - 10), 20 \
   }
 #define NOZZLE_PARK_MOVE 0          // Park motion: 0 = XY Move, 1 = X Only, 2 = Y Only, 3 = X before Y, 4 = Y before X
-#define NOZZLE_PARK_Z_RAISE_MIN 2   // (mm) Always raise Z by at least this distance
+#define NOZZLE_PARK_Z_RAISE_MIN 10  // (mm) Always raise Z by at least this distance
 #define NOZZLE_PARK_XY_FEEDRATE 100 // (mm/s) X and Y axes feedrate (also used for delta Z axis)
 #define NOZZLE_PARK_Z_FEEDRATE 5    // (mm/s) Z axis feedrate (not used for delta printers)
 #endif

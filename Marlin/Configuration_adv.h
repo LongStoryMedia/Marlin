@@ -1650,14 +1650,14 @@
  * Use 'M503 C' to write the settings out to the SD Card as 'mc.zip'.
  * See docs/ConfigEmbedding.md for details on how to use 'mc-apply.py'.
  */
-//#define CONFIGURATION_EMBEDDING
+#define CONFIGURATION_EMBEDDING
 
 // Add an optimized binary file transfer mode, initiated with 'M28 B1'
-//#define BINARY_FILE_TRANSFER
+#define BINARY_FILE_TRANSFER
 
 #if ENABLED(BINARY_FILE_TRANSFER)
 // Include extra facilities (e.g., 'M20 F') supporting firmware upload via BINARY_FILE_TRANSFER
-//#define CUSTOM_FIRMWARE_UPLOAD
+#define CUSTOM_FIRMWARE_UPLOAD
 #endif
 
 /**
@@ -1988,11 +1988,11 @@
  *
  * Warning: Does not respect endstops!
  */
-//#define BABYSTEPPING
+#define BABYSTEPPING
 #if ENABLED(BABYSTEPPING)
 //#define INTEGRATED_BABYSTEPPING         // EXPERIMENTAL integration of babystepping into the Stepper ISR
 //#define BABYSTEP_WITHOUT_HOMING
-//#define BABYSTEP_ALWAYS_AVAILABLE       // Allow babystepping at all times (not just during movement).
+#define BABYSTEP_ALWAYS_AVAILABLE // Allow babystepping at all times (not just during movement).
 //#define BABYSTEP_XY                     // Also enable X/Y Babystepping. Not supported on DELTA!
 #define BABYSTEP_INVERT_Z false // Change if Z babysteps should go the other way
 //#define BABYSTEP_MILLIMETER_UNITS       // Specify BABYSTEP_MULTIPLICATOR_(XY|Z) in mm instead of micro-steps
@@ -2011,9 +2011,9 @@
 
 //#define BABYSTEP_DISPLAY_TOTAL          // Display total babysteps since last G28
 
-//#define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
+#define BABYSTEP_ZPROBE_OFFSET // Combine M851 Z and Babystepping
 #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
-//#define BABYSTEP_HOTEND_Z_OFFSET      // For multiple hotends, babystep relative Z offsets
+#define BABYSTEP_HOTEND_Z_OFFSET // For multiple hotends, babystep relative Z offsets
 //#define BABYSTEP_ZPROBE_GFX_OVERLAY   // Enable graphical overlay on Z-offset editor
 #endif
 #endif
@@ -2035,13 +2035,13 @@
  *
  * See https://marlinfw.org/docs/features/lin_advance.html for full instructions.
  */
-//#define LIN_ADVANCE
+#define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
 //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
 #define LIN_ADVANCE_K 0.22 // Unit: mm compression per 1mm/s extruder speed
 //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
 //#define EXPERIMENTAL_SCURVE // Enable this option to permit S-Curve Acceleration
-//#define ALLOW_LOW_EJERK     // Allow a DEFAULT_EJERK value of <10. Recommended for direct drive hotends.
+#define ALLOW_LOW_EJERK // Allow a DEFAULT_EJERK value of <10. Recommended for direct drive hotends.
 #endif
 
 // @section leveling
@@ -2365,7 +2365,7 @@
  * Currently handles M108, M112, M410, M876
  * NOTE: Not yet implemented for all platforms.
  */
-//#define EMERGENCY_PARSER
+#define EMERGENCY_PARSER
 
 /**
  * Realtime Reporting (requires EMERGENCY_PARSER)
@@ -2382,7 +2382,7 @@
  * - During Hold all Emergency Parser commands are available, as usual.
  * - Enable NANODLP_Z_SYNC and NANODLP_ALL_AXIS for move command end-state reports.
  */
-//#define REALTIME_REPORTING_COMMANDS
+#define REALTIME_REPORTING_COMMANDS
 #if ENABLED(REALTIME_REPORTING_COMMANDS)
 //#define FULL_REPORT_TO_HOST_FEATURE   // Auto-report the machine status like Grbl CNC
 #endif
