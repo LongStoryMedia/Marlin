@@ -860,7 +860,7 @@
 
 //#define HOMING_BACKOFF_POST_MM { 2, 2, 2 }  // (mm) Backoff from endstops after homing
 
-//#define QUICK_HOME                          // If G28 contains XY do a diagonal move first
+#define QUICK_HOME // If G28 contains XY do a diagonal move first
 //#define HOME_Y_BEFORE_X                     // If G28 contains XY home Y before X
 //#define HOME_Z_FIRST                        // Home Z first. Requires a Z-MIN endstop (not a probe).
 //#define CODEPENDENT_XY_HOMING               // If X/Y can't home without homing Y/X first
@@ -885,7 +885,7 @@
 
 // Safety: The probe needs time to recognize the command.
 //         Minimum command delay (ms). Enable and increase if needed.
-//#define BLTOUCH_DELAY 500
+#define BLTOUCH_DELAY 200
 
 /**
  * Settings for BLTOUCH Classic 1.2, 1.3 or BLTouch Smart 1.0, 2.0, 2.2, 3.0, 3.1, and most clones:
@@ -990,7 +990,7 @@
 
 // On a 300mm bed a 5% grade would give a misalignment of ~1.5cm
 #define G34_MAX_GRADE 5              // (%) Maximum incline that G34 will handle
-#define Z_STEPPER_ALIGN_ITERATIONS 5 // Number of iterations to apply during alignment
+#define Z_STEPPER_ALIGN_ITERATIONS 3 // Number of iterations to apply during alignment
 #define Z_STEPPER_ALIGN_ACC 0.02     // Stop iterating early if the accuracy is better than this
 #define RESTORE_LEVELING_AFTER_G34   // Restore leveling after G34 is done?
 // After G34, re-home Z (G28 Z) or just calculate it from the last probe heights?
@@ -1077,7 +1077,7 @@
 // Increase the slowdown divisor for larger buffer sizes.
 #define SLOWDOWN
 #if ENABLED(SLOWDOWN)
-#define SLOWDOWN_DIVISOR 2
+#define SLOWDOWN_DIVISOR 8
 #endif
 
 /**
@@ -1308,9 +1308,8 @@
 // Change values more rapidly when the encoder is rotated faster
 #define ENCODER_RATE_MULTIPLIER
 #if ENABLED(ENCODER_RATE_MULTIPLIER)
-#define ENCODER_5X_STEPS_PER_SEC 30    // (steps/s) Encoder rate for 5x speed
-#define ENCODER_10X_STEPS_PER_SEC 80   // (steps/s) Encoder rate for 10x speed
-#define ENCODER_100X_STEPS_PER_SEC 130 // (steps/s) Encoder rate for 100x speed
+#define ENCODER_10X_STEPS_PER_SEC 30  // (steps/s) Encoder rate for 10x speed
+#define ENCODER_100X_STEPS_PER_SEC 80 // (steps/s) Encoder rate for 100x speed
 #endif
 
 // Play a beep when the feedrate is changed from the Status Screen
@@ -1509,7 +1508,7 @@
  * an option on the LCD screen to continue the print from the last-known
  * point in the file.
  */
-#define POWER_LOSS_RECOVERY
+// #define POWER_LOSS_RECOVERY
 #if ENABLED(POWER_LOSS_RECOVERY)
 #define PLR_ENABLED_DEFAULT false // Power Loss Recovery enabled by default. (Set with 'M413 Sn' & M500)
 //#define BACKUP_POWER_SUPPLY       // Backup power / UPS to move the steppers on power loss
@@ -2000,7 +1999,7 @@
 //#define BABYSTEP_XY                     // Also enable X/Y Babystepping. Not supported on DELTA!
 #define BABYSTEP_INVERT_Z false // Change if Z babysteps should go the other way
 //#define BABYSTEP_MILLIMETER_UNITS       // Specify BABYSTEP_MULTIPLICATOR_(XY|Z) in mm instead of micro-steps
-#define BABYSTEP_MULTIPLICATOR_Z 1  // (steps or mm) Steps or millimeter distance for each Z babystep
+#define BABYSTEP_MULTIPLICATOR_Z 4  // (steps or mm) Steps or millimeter distance for each Z babystep
 #define BABYSTEP_MULTIPLICATOR_XY 1 // (steps or mm) Steps or millimeter distance for each XY babystep
 
 //#define DOUBLECLICK_FOR_Z_BABYSTEPPING  // Double-click on the Status Screen for Z Babystepping.
@@ -2015,10 +2014,10 @@
 
 //#define BABYSTEP_DISPLAY_TOTAL          // Display total babysteps since last G28
 
-// #define BABYSTEP_ZPROBE_OFFSET // Combine M851 Z and Babystepping
+#define BABYSTEP_ZPROBE_OFFSET // Combine M851 Z and Babystepping
 #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
 // #define BABYSTEP_HOTEND_Z_OFFSET // For multiple hotends, babystep relative Z offsets
-//#define BABYSTfalseEP_ZPROBE_GFX_OVERLAY   // Enable graphical overlay on Z-offset editor
+#define BABYSTEP_ZPROBE_GFX_OVERLAY // Enable graphical overlay on Z-offset editor
 #endif
 #endif
 
@@ -2039,10 +2038,10 @@
  *
  * See https://marlinfw.org/docs/features/lin_advance.html for full instructions.
  */
-// #define LIN_ADVANCE
+#define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
 //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
-#define LIN_ADVANCE_K 0.22 // Unit: mm compression per 1mm/s extruder speed
+#define LIN_ADVANCE_K 0.12 // Unit: mm compression per 1mm/s extruder speed
 //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
 //#define EXPERIMENTAL_SCURVE // Enable this option to permit S-Curve Acceleration
 #define ALLOW_LOW_EJERK // Allow a DEFAULT_EJERK value of <10. Recommended for direct drive hotends.
@@ -2313,7 +2312,7 @@
 #if BOTH(SDSUPPORT, DIRECT_STEPPING)
 #define BLOCK_BUFFER_SIZE 8
 #elif ENABLED(SDSUPPORT)
-#define BLOCK_BUFFER_SIZE 16
+#define BLOCK_BUFFER_SIZE 32
 #else
 #define BLOCK_BUFFER_SIZE 16
 #endif
@@ -2322,7 +2321,7 @@
 
 // The ASCII buffer for serial input
 #define MAX_CMD_SIZE 96
-#define BUFSIZE 4
+#define BUFSIZE 32
 
 // Transmission to Host Buffer Size
 // To save 386 bytes of PROGMEM (and TX_BUFFER_SIZE+3 bytes of RAM) set to 0.
@@ -2331,7 +2330,7 @@
 // For debug-echo: 128 bytes for the optimal speed.
 // Other output doesn't need to be that speedy.
 // :[0, 2, 4, 8, 16, 32, 64, 128, 256]
-#define TX_BUFFER_SIZE 0
+#define TX_BUFFER_SIZE 32
 
 // Host Receive Buffer Size
 // Without XON/XOFF flow control (see SERIAL_XON_XOFF below) 32 bytes should be enough.
@@ -2566,7 +2565,7 @@
                                              // This short retract is done immediately, before parking the nozzle.
 #define FILAMENT_CHANGE_UNLOAD_FEEDRATE 10   // (mm/s) Unload filament feedrate. This can be pretty fast.
 #define FILAMENT_CHANGE_UNLOAD_ACCEL 25      // (mm/s^2) Lower acceleration may allow a faster feedrate.
-#define FILAMENT_CHANGE_UNLOAD_LENGTH 100    // (mm) The length of filament for a complete unload.
+#define FILAMENT_CHANGE_UNLOAD_LENGTH 200    // (mm) The length of filament for a complete unload.
                                              //   For Bowden, the full length of the tube and nozzle.
                                              //   For direct drive, the full length of the nozzle.
                                              //   Set to 0 for manual unloading.
@@ -2575,7 +2574,7 @@
                                              // 0 to disable start loading and skip to fast load only
 #define FILAMENT_CHANGE_FAST_LOAD_FEEDRATE 6 // (mm/s) Load filament feedrate. This can be pretty fast.
 #define FILAMENT_CHANGE_FAST_LOAD_ACCEL 25   // (mm/s^2) Lower acceleration may allow a faster feedrate.
-#define FILAMENT_CHANGE_FAST_LOAD_LENGTH 0   // (mm) Load length of filament, from extruder gear to nozzle.
+#define FILAMENT_CHANGE_FAST_LOAD_LENGTH 200 // (mm) Load length of filament, from extruder gear to nozzle.
                                              //   For Bowden, the full length of the tube and nozzle.
                                              //   For direct drive, the full length of the nozzle.
 //#define ADVANCED_PAUSE_CONTINUOUS_PURGE       // Purge continuously up to the purge length until interrupted.
@@ -2602,7 +2601,7 @@
 //#define PARK_HEAD_ON_PAUSE                    // Park the nozzle during pause and filament change.
 //#define HOME_BEFORE_FILAMENT_CHANGE           // If needed, home before parking for filament change
 
-//#define FILAMENT_LOAD_UNLOAD_GCODES           // Add M701/M702 Load/Unload G-codes, plus Load/Unload in the LCD Prepare menu.
+#define FILAMENT_LOAD_UNLOAD_GCODES // Add M701/M702 Load/Unload G-codes, plus Load/Unload in the LCD Prepare menu.
 //#define FILAMENT_UNLOAD_ALL_EXTRUDERS         // Allow M702 to unload all extruders above a minimum target temp (as set by M302)
 #endif
 
